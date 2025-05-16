@@ -8,10 +8,10 @@ export async function saveContact(req, res) {
     }
     const contact = new Contact({ name, email });
     await contact.save();
-    console.log('contact saved:', contact);
+    console.log('-contact saved:\n', contact);
     res.status(200).json({ message: 'contact saved successfully' });
   } catch (error) {
-    console.error('error saving contact:', error);
+    console.error(error);
     res.status(500).json({ error });
   }
 }

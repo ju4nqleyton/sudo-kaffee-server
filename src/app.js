@@ -15,11 +15,11 @@ app.use('/contacts', contactRoutes);
 mongoose
   .connect(process.env.MONGODB_URI)
   .then(() => {
-    console.log('connection mongodb successful');
+    console.log('-connection mongodb successful');
   })
   .catch((error) => console.error(error));
 
 const PORT = 3000;
 app.listen(PORT, () => {
-  console.log(`server running in port ${PORT}`);
+  console.log(`-server running in port ${PORT}`);
 });
