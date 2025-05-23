@@ -1,4 +1,5 @@
 import Contact from '../models/Contact.js';
+import { sendEmail } from '../utils.js';
 
 export async function saveContact(req, res) {
   try {
@@ -9,6 +10,7 @@ export async function saveContact(req, res) {
     const contact = new Contact({ name, email, message });
     await contact.save();
     console.log('-contact saved:\n', contact);
+    await sendEmail({ name, email, message });
     res.status(200).json({ message: 'contact saved successfully' });
   } catch (error) {
     console.error(error);
