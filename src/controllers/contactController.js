@@ -2,11 +2,11 @@ import Contact from '../models/Contact.js';
 
 export async function saveContact(req, res) {
   try {
-    const { name, email } = req.body;
-    if (!name || !email) {
+    const { name, email, message } = req.body;
+    if (!name || !email || !message) {
       return res.status(400).json({ message: 'empty fields' });
     }
-    const contact = new Contact({ name, email });
+    const contact = new Contact({ name, email, message });
     await contact.save();
     console.log('-contact saved:\n', contact);
     res.status(200).json({ message: 'contact saved successfully' });
