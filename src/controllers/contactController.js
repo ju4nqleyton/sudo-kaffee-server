@@ -9,7 +9,12 @@ export async function saveContact(req, res) {
     }
     const contact = new Contact({ name, email, message });
     await contact.save();
-    console.log('-contact saved:\n', contact);
+    console.log('-contact saved:', {
+      id: contact._id.toString(),
+      name: contact.name,
+      email: contact.email,
+      message: contact.message,
+    });
     await sendEmail({ name, email, message });
     res.status(200).json({ message: 'contact saved successfully' });
   } catch (error) {
